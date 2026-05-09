@@ -1,0 +1,119 @@
+/* Write your CSS code here */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: "Rubik", sans-serif;
+    background-color: transparent;
+}
+
+.container {
+    color: #f24825;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.title {
+    font-size: 50px;
+    text-transform: uppercase;
+    font-weight: 900;
+}
+
+.description {
+    width: 60%;
+    text-align: center;
+}
+
+.burger-slider {
+    overflow: hidden;
+    background-color: transparent;
+    width: 100%;
+    height: 200px;
+    position: relative;
+}
+
+.burger-slider::after,
+.burger-slider::before {
+
+    position: absolute;
+    width: 50px;
+    height: 100%;
+    content: "";
+    background: linear-gradient(to right, rgba(246, 242, 239, 1) 0%, rgba(246, 242, 239, 0) 0%);
+}
+
+.burger-slider::before {
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.burger-slider::after {
+    right: 0;
+    top: 0;
+    transform: rotateZ(180deg);
+}
+
+.slider-wrapper {
+    height: 100%;
+    width: calc(300px*18);
+    display: flex;
+    animation: slide 35s linear infinite;
+}
+.slider-wrapper:hover{
+animation-play-state: paused;
+}
+
+.slide {
+    width: 300px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.slide:has(:hover)>.img-container>.burger-info {
+    opacity: 1;
+}
+
+.img-container {
+    width: 95%;
+    height: 80%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+}
+
+.burger-image {
+    object-fit: cover;
+    width: 300px;
+}
+
+.burger-title {
+    font-weight: 500;
+    text-align: center;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0)
+    }
+
+    100% {
+        transform: translateX(calc(-300px*9))
+    }
+}
